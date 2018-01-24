@@ -2,9 +2,13 @@ import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
 
+
 class App extends Component {
   state = {};
-  componentDidMount() {}
+  componentDidMount() {
+    const gsjson = require("google-spreadsheet-to-json");
+    debugger;
+  }
   render() {
     return (
       <div className="App">
