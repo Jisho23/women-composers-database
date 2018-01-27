@@ -6,7 +6,7 @@ import "./App.css";
 class App extends Component {
   state = {};
   componentDidMount() {
-    const gsjson = require("google-spreadsheet-to-json");
+    var json = require('./data.json')
     debugger;
   }
   render() {
