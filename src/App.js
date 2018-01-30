@@ -5,14 +5,17 @@ import { List } from "semantic-ui-react";
 
 class App extends Component {
   state = {
-    composers: {},
+    composers: [],
     filters: {
       name: ""
     }
   };
   componentDidMount() {
     const json = require("./data.json");
-    const composerList = json["Women Composers Database"];
+    const composerList = [];
+    for (let composer in json["Women Composers Database"]) {
+      composerList.push(composer);
+    }
     this.setState({ composers: composerList });
     debugger;
   }
@@ -24,7 +27,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to the Women Composers Database</h1>
         </header>
         <List className="App-intro">
-          {Object.keys(this.state.composers).map(composer => (
+          {this.state.composers.map(composer => (
             <List.Item>{composer}</List.Item>
           ))}
         </List>
