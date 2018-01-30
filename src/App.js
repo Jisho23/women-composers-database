@@ -7,7 +7,7 @@ class App extends Component {
   state = {
     composers: [],
     filters: {
-      name: ""
+      name: "Abb"
     }
   };
   componentDidMount() {
@@ -17,9 +17,13 @@ class App extends Component {
       composerList.push(composer);
     }
     this.setState({ composers: composerList });
-    debugger;
   }
+
   render() {
+    const composerNames = this.state.composers.filter(name =>
+      name.toLowerCase().includes(this.state.filters.name.toLowerCase())
+    );
+    
     return (
       <div className="App">
         <header className="App-header">
@@ -27,9 +31,7 @@ class App extends Component {
           <h1 className="App-title">Welcome to the Women Composers Database</h1>
         </header>
         <List className="App-intro">
-          {this.state.composers.map(composer => (
-            <List.Item>{composer}</List.Item>
-          ))}
+          {composerNames.map(composer => <List.Item>{composer}</List.Item>)}
         </List>
       </div>
     );
