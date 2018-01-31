@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import {
-  List,
-  Container,
   Menu,
   Input,
   Segment,
@@ -23,7 +21,7 @@ class Navbar extends Component {
             />
           </Menu.Item>{" "}
           <Menu.Item>
-            <Header as="h4" inverted color="teal">
+            <Header as="h4" inverted>
               Welcome to the Women Composers Database Project
             </Header>
           </Menu.Item>

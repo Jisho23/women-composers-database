@@ -1,16 +1,8 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
-import {
-  List,
-  Container,
-  Menu,
-  Input,
-  Segment,
-  Header,
-  Button
-} from "semantic-ui-react";
+import { Segment } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
+import ComposerInfo from "./components/ComposerInfo";
 
 class App extends Component {
   state = {
@@ -35,7 +27,6 @@ class App extends Component {
     const composerNames = this.state.composers.filter(name =>
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
-    let index = 0;
 
     return (
       <div className="App">
@@ -43,11 +34,11 @@ class App extends Component {
           nameFilter={this.state.nameFilter}
           searchByName={this.searchByName}
         />
-        <List className="App-intro">
+        <Segment.Group compact className="Composer List">
           {composerNames.map(composer => (
-            <List.Item id={index++}>{composer}</List.Item>
+            <ComposerInfo composerName={composer} />
           ))}
-        </List>
+        </Segment.Group>
       </div>
     );
   }
