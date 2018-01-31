@@ -1,16 +1,23 @@
 import React, { Component } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import { List } from "semantic-ui-react";
+import {
+  List,
+  Container,
+  Menu,
+  Input,
+  Segment,
+  Header,
+  Button
+} from "semantic-ui-react";
+import Navbar from "./components/Navbar.js";
 
 class App extends Component {
   state = {
     composers: [],
-    filters: {
-      name: ""
-    }
+    nameFilter: ""
   };
-  
+
   componentDidMount() {
     const json = require("./data.json");
     const composerList = [];
@@ -20,19 +27,26 @@ class App extends Component {
     this.setState({ composers: composerList });
   }
 
+  searchByName = event => {
+    debugger;
+    this.setState({ nameFilter: event.target.value });
+  };
   render() {
     const composerNames = this.state.composers.filter(name =>
-      name.toLowerCase().includes(this.state.filters.name.toLowerCase())
+      name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
+    let index = 0;
 
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to the Women Composers Database</h1>
-        </header>
+        <Navbar
+          nameFilter={this.state.nameFilter}
+          searchByName={this.searchByName}
+        />
         <List className="App-intro">
-          {composerNames.map(composer => <List.Item>{composer}</List.Item>)}
+          {composerNames.map(composer => (
+            <List.Item id={index++}>{composer}</List.Item>
+          ))}
         </List>
       </div>
     );
