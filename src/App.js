@@ -7,9 +7,10 @@ class App extends Component {
   state = {
     composers: [],
     filters: {
-      name: "Abb"
+      name: ""
     }
   };
+  
   componentDidMount() {
     const json = require("./data.json");
     const composerList = [];
@@ -23,7 +24,7 @@ class App extends Component {
     const composerNames = this.state.composers.filter(name =>
       name.toLowerCase().includes(this.state.filters.name.toLowerCase())
     );
-    
+
     return (
       <div className="App">
         <header className="App-header">
