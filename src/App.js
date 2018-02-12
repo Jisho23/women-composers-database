@@ -28,6 +28,8 @@ class App extends Component {
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
 
+    const composerInfo = require("./data.json")
+
     return (
       <div className="App">
         <Navbar
