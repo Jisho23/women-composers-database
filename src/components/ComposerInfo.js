@@ -13,7 +13,7 @@ class ComposerInfo extends Component {
   render() {
     return (
       <Segment id={this.props.composerName}>
-        {this.props.composerName}
+        {this.props.composerInfo["COMPOSER NAMES"]}
         <Button floated="right" onClick={this.hideShowInfo}>
           {this.state.revealed ? "Hide" : "Show"}
         </Button>

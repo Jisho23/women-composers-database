@@ -27,9 +27,8 @@ class App extends Component {
     const composerNames = this.state.composers.filter(name =>
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
-
-    const composerInfo = require("./data.json")
-
+    const json = require("./data.json");
+    const composerInfo = json["Women Composers Database"];
     return (
       <div className="App">
         <Navbar
@@ -38,7 +37,7 @@ class App extends Component {
         />
         <Segment.Group compact className="Composer List">
           {composerNames.map(composer => (
-            <ComposerInfo composerName={composer} />
+            <ComposerInfo composerInfo={composerInfo[composer]} />
           ))}
         </Segment.Group>
       </div>
