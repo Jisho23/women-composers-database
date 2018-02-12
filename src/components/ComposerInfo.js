@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Segment, Header, Button } from "semantic-ui-react";
+import { Segment, Button } from "semantic-ui-react";
 
 class ComposerInfo extends Component {
   state = {
@@ -17,6 +17,7 @@ class ComposerInfo extends Component {
         <Button floated="right" onClick={this.hideShowInfo}>
           {this.state.revealed ? "Hide" : "Show"}
         </Button>
+        {this.state.revealed ? null : null}
       </Segment>
     );
   }
