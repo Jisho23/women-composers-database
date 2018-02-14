@@ -20,7 +20,6 @@ class App extends Component {
   }
 
   searchByName = event => {
-    debugger;
     this.setState({ nameFilter: event.target.value });
   };
   render() {
