@@ -3,11 +3,13 @@ import "./App.css";
 import { Segment } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
+import SidebarFilter from "./components/Sidebar.js";
 
 class App extends Component {
   state = {
     composers: [],
-    nameFilter: ""
+    nameFilter: "",
+    advancedFilters: false
   };
 
   componentDidMount() {
@@ -22,6 +24,10 @@ class App extends Component {
   searchByName = event => {
     this.setState({ nameFilter: event.target.value });
   };
+  showAdvancedFilters = event => {
+    this.setState({ advancedFilters: !this.state.showAdvancedFilters });
+  };
+
   render() {
     const composerNames = this.state.composers.filter(name =>
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
