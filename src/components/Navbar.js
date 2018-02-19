@@ -1,11 +1,5 @@
 import React, { Component } from "react";
-import {
-  Menu,
-  Input,
-  Segment,
-  Header,
-  Button
-} from "semantic-ui-react";
+import { Menu, Input, Segment, Header, Button } from "semantic-ui-react";
 
 class Navbar extends Component {
   render() {
@@ -26,7 +20,9 @@ class Navbar extends Component {
             </Header>
           </Menu.Item>
           <Menu.Item position="right">
-            <Button>More filters</Button>
+            <Button onClick={this.props.showAdvancedFilters}>
+              More filters
+            </Button>
           </Menu.Item>
         </Menu>
       </Segment>

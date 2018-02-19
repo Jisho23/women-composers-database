@@ -11,7 +11,6 @@ import {
 
 class SidebarFilter extends Component {
   render() {
-    const { visible } = this.props.visibility;
     return (
       <div>
         <Sidebar.Pushable as={Segment}>
@@ -19,7 +18,7 @@ class SidebarFilter extends Component {
             as={Menu}
             animation="overlay"
             width="thin"
-            visible={visible}
+            visible={this.props.visibility}
             icon="labeled"
             vertical
             inverted
@@ -37,12 +36,6 @@ class SidebarFilter extends Component {
               Channels
             </Menu.Item>
           </Sidebar>
-          <Sidebar.Pusher>
-            <Segment basic>
-              <Header as="h3">Application Content</Header>
-              <Image src="/assets/images/wireframe/paragraph.png" />
-            </Segment>
-          </Sidebar.Pusher>
         </Sidebar.Pushable>
       </div>
     );

@@ -1,15 +1,26 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Segment } from "semantic-ui-react";
+import {
+  Segment,
+  Sidebar,
+  Header,
+  Menu,
+  Icon,
+  Checkbox,
+  Form,
+  Button
+} from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
 import SidebarFilter from "./components/Sidebar.js";
+import AdvancedFilterForm from "./components/AdvancedFilterForm.js";
 
 class App extends Component {
   state = {
     composers: [],
     nameFilter: "",
-    advancedFilters: false
+    advancedFilters: false,
+    filters: {}
   };
 
   componentDidMount() {
@@ -25,7 +36,14 @@ class App extends Component {
     this.setState({ nameFilter: event.target.value });
   };
   showAdvancedFilters = event => {
-    this.setState({ advancedFilters: !this.state.showAdvancedFilters });
+    this.setState({ advancedFilters: !this.state.advancedFilters });
+    console.log(this.state.advancedFilters);
+  };
+
+  setAdvancedFilter = (name, value) => {
+    let advancedFilters = this.state.filters;
+    advancedFilters[name] = value;
+    this.setState({ filters: advancedFilters });
   };
 
   render() {
@@ -39,12 +57,30 @@ class App extends Component {
         <Navbar
           nameFilter={this.state.nameFilter}
           searchByName={this.searchByName}
+          showAdvancedFilters={this.showAdvancedFilters}
         />
-        <Segment.Group compact className="Composer List">
-          {composerNames.map(composer => (
-            <ComposerInfo composerInfo={composerInfo[composer]} />
-          ))}
-        </Segment.Group>
+        <Sidebar.Pushable as={Segment}>
+          <Sidebar
+            as={Menu}
+            animation="overlay"
+            width="thin"
+            visible={this.state.advancedFilters}
+            icon="labeled"
+            inverted
+            vertical
+          >
+            <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
+          </Sidebar>
+          <Sidebar.Pusher>
+            <Segment basic>
+              <Segment.Group compact className="Composer List">
+                {composerNames.map(composer => (
+                  <ComposerInfo composerInfo={composerInfo[composer]} />
+                ))}
+              </Segment.Group>
+            </Segment>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
       </div>
     );
   }
