@@ -1,5 +1,5 @@
 import React from "react";
-import { Form, Checkbox, Header, Menu } from "semantic-ui-react";
+import { Form, Header, Menu } from "semantic-ui-react";
 
 export const createAdvancedFilterForm = (state, handleChange) => {
   return (

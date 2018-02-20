@@ -1,16 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  Segment,
-  Sidebar,
-  Header,
-  Menu,
-  Icon,
-  Checkbox,
-  Form,
-  Button,
-  Container
-} from "semantic-ui-react";
+import { Segment, Sidebar, Menu } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
 import SidebarFilter from "./components/Sidebar.js";
@@ -48,40 +38,49 @@ class App extends Component {
   };
 
   render() {
+    const json = require("./data.json");
+    const composerInfo = json["Women Composers Database"];
     let composerNames = this.state.composers.filter(name =>
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
-    const json = require("./data.json");
-    const composerInfo = json["Women Composers Database"];
+
+    for (let attribute in this.state.filters) {
+      if (this.state.filters[attribute]) {
+        composerNames = composerNames.filter(name => {
+          return composerInfo[name][attribute] === "X";
+        });
+      }
+    }
+    console.log(composerNames);
+
     return (
-      <div className="App">
-        <Navbar
-          nameFilter={this.state.nameFilter}
-          searchByName={this.searchByName}
-          showAdvancedFilters={this.showAdvancedFilters}
-        />
-        <Sidebar.Pushable as={Segment}>
-          <Sidebar
-            as={Menu}
-            animation="overlay"
-            visible={this.state.advancedFilters}
-            direction="right"
-            inverted
-            vertical
-          >
-            <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
-          </Sidebar>
-          <Sidebar.Pusher>
-            <Segment basic>
-              <Segment.Group compact className="Composer List">
-                {composerNames.map(composer => (
-                  <ComposerInfo composerInfo={composerInfo[composer]} />
-                ))}
-              </Segment.Group>
-            </Segment>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
-      </div>
+      <Sidebar.Pushable>
+        <Sidebar
+          as={Menu}
+          animation="uncover"
+          direction="right"
+          visible={this.state.advancedFilters}
+          vertical
+          inverted
+        >
+          <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
+        </Sidebar>
+        <Sidebar.Pusher>
+          <div className="App">
+            <Navbar
+              nameFilter={this.state.nameFilter}
+              searchByName={this.searchByName}
+              showAdvancedFilters={this.showAdvancedFilters}
+            />
+
+            <Segment.Group compact className="Composer List">
+              {composerNames.map(composer => (
+                <ComposerInfo composerInfo={composerInfo[composer]} />
+              ))}
+            </Segment.Group>
+          </div>
+        </Sidebar.Pusher>
+      </Sidebar.Pushable>
     );
   }
 }
