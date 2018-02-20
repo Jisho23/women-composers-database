@@ -8,7 +8,8 @@ import {
   Icon,
   Checkbox,
   Form,
-  Button
+  Button,
+  Container
 } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
@@ -47,7 +48,7 @@ class App extends Component {
   };
 
   render() {
-    const composerNames = this.state.composers.filter(name =>
+    let composerNames = this.state.composers.filter(name =>
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
     const json = require("./data.json");
@@ -63,9 +64,8 @@ class App extends Component {
           <Sidebar
             as={Menu}
             animation="overlay"
-            width="thin"
             visible={this.state.advancedFilters}
-            icon="labeled"
+            direction="right"
             inverted
             vertical
           >
