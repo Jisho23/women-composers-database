@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Segment, Sidebar, Menu } from "semantic-ui-react";
+import { Segment, Sidebar, Menu, Container } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
 import SidebarFilter from "./components/Sidebar.js";
@@ -58,10 +58,11 @@ class App extends Component {
         <Sidebar
           as={Menu}
           animation="uncover"
-          direction="right"
+          direction="left"
           visible={this.state.advancedFilters}
           vertical
           inverted
+          style={{ minHeight: 300 }}
         >
           <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
         </Sidebar>
@@ -73,7 +74,11 @@ class App extends Component {
               showAdvancedFilters={this.showAdvancedFilters}
             />
 
-            <Segment.Group compact className="Composer List">
+            <Segment.Group
+              compact
+              style={{ minHeight: 300 }}
+              className="Composer List"
+            >
               {composerNames.map(composer => (
                 <ComposerInfo composerInfo={composerInfo[composer]} />
               ))}
