@@ -8,20 +8,12 @@ import AdvancedFilterForm from "./components/AdvancedFilterForm.js";
 
 class App extends Component {
   state = {
-    composers: [],
     nameFilter: "",
     advancedFilters: false,
     filters: {}
   };
 
-  componentDidMount() {
-    const json = require("./data.json");
-    const composerList = [];
-    for (let composer in json["Women Composers Database"]) {
-      composerList.push(composer);
-    }
-    this.setState({ composers: composerList });
-  }
+  componentDidMount() {}
 
   searchByName = event => {
     this.setState({ nameFilter: event.target.value });
@@ -40,7 +32,12 @@ class App extends Component {
   render() {
     const json = require("./data.json");
     const composerInfo = json["Women Composers Database"];
-    let composerNames = this.state.composers.filter(name =>
+    let composerNames = [];
+    for (let composer in json["Women Composers Database"]) {
+      composerNames.push(composer);
+    }
+
+    composerNames = composerNames.filter(name =>
       name.toLowerCase().includes(this.state.nameFilter.toLowerCase())
     );
 
