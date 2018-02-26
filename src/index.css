@@ -1,10 +1,15 @@
 body {
-  font-family: 'Titillium Web', sans-serif;
+  font-family: "Titillium Web", sans-serif;
   min-height: 200px;
+  background: linear-gradient(to right, white, lightblue);
 }
 .heading {
   font-weight: 700;
 }
 .subheading {
   font-weight: 300;
+}
+
+label {
+  font-size: small;
 }

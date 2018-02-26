@@ -217,6 +217,28 @@ export const createAdvancedFilterForm = (state, handleChange) => {
             </label>
           </Form>
         </Menu.Item>
+        <Menu.Item>
+          <label>
+            Search by Country{" "}
+            <input
+              name="COUNTRY (of residence)"
+              type="text"
+              value={state["COUNTRY (of residence)"]}
+              onChange={handleChange}
+            />
+          </label>
+        </Menu.Item>
+        <Menu.Item>
+          <label>
+            Search by City of Residence{" "}
+            <input
+              name="CITY/STATE (of residence)"
+              type="text"
+              value={state["CITY/STATE (of residence)"]}
+              onChange={handleChange}
+            />
+          </label>
+        </Menu.Item>
       </Menu>
     </div>
   );

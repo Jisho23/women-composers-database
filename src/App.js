@@ -24,6 +24,7 @@ class App extends Component {
   };
 
   setAdvancedFilter = (name, value) => {
+    debugger;
     let advancedFilters = this.state.filters;
     advancedFilters[name] = value;
     this.setState({ filters: advancedFilters });
@@ -42,21 +43,27 @@ class App extends Component {
     );
 
     for (let attribute in this.state.filters) {
-      switch (typeof this.state.filters[attribute] === "boolean") {
-        case this.state.filters[attribute] === true:
-          composerNames = composerNames.filter(name => {
-            return composerInfo[name][attribute] === "X";
-          });
-          break;
+      if (
+        typeof this.state.filters[attribute] === "string" ||
+        this.state.filters[attribute] instanceof String
+      ) {
+        composerNames = composerNames.filter(name => {
+          return composerInfo[name][attribute]
+            .toLowerCase()
+            .includes(this.state.filters[attribute].toLowerCase());
+        });
+      } else if (this.state.filters[attribute] === true) {
+        composerNames = composerNames.filter(name => {
+          return composerInfo[name][attribute] === "X";
+        });
       }
-
-      // if (this.state.filters[attribute]) {
-      //   composerNames = composerNames.filter(name => {
-      //     return composerInfo[name][attribute] === "X";
-      //   });
-      // }
     }
-    console.log(composerNames);
+
+    // if (this.state.filters[attribute]) {
+    //   composerNames = composerNames.filter(name => {
+    //     return composerInfo[name][attribute] === "X";
+    //   });
+    // }
 
     return (
       <Sidebar.Pushable>
@@ -65,6 +72,7 @@ class App extends Component {
           animation="uncover"
           direction="left"
           visible={this.state.advancedFilters}
+          width={"wide"}
           vertical
           inverted
           style={{ minHeight: 300 }}
