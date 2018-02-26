@@ -42,11 +42,19 @@ class App extends Component {
     );
 
     for (let attribute in this.state.filters) {
-      if (this.state.filters[attribute]) {
-        composerNames = composerNames.filter(name => {
-          return composerInfo[name][attribute] === "X";
-        });
+      switch (typeof this.state.filters[attribute] === "boolean") {
+        case this.state.filters[attribute] === true:
+          composerNames = composerNames.filter(name => {
+            return composerInfo[name][attribute] === "X";
+          });
+          break;
       }
+
+      // if (this.state.filters[attribute]) {
+      //   composerNames = composerNames.filter(name => {
+      //     return composerInfo[name][attribute] === "X";
+      //   });
+      // }
     }
     console.log(composerNames);
 
