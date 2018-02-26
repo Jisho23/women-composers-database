@@ -13,3 +13,7 @@ body {
 label {
   font-size: small;
 }
+
+#root{
+  min-height: 1000px;
+}

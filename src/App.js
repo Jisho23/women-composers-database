@@ -66,39 +66,36 @@ class App extends Component {
     // }
 
     return (
-      <Sidebar.Pushable>
-        <Sidebar
-          as={Menu}
-          animation="uncover"
-          direction="left"
-          visible={this.state.advancedFilters}
-          width={"wide"}
-          vertical
-          inverted
-          style={{ minHeight: 300 }}
-        >
-          <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
-        </Sidebar>
-        <Sidebar.Pusher>
-          <div className="App">
-            <Navbar
-              nameFilter={this.state.nameFilter}
-              searchByName={this.searchByName}
-              showAdvancedFilters={this.showAdvancedFilters}
-            />
+      <div>
+        <Sidebar.Pushable>
+          <Sidebar
+            as={Menu}
+            animation="uncover"
+            direction="left"
+            visible={this.state.advancedFilters}
+            width={"wide"}
+            vertical
+            inverted
+          >
+            <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
+          </Sidebar>
+          <Sidebar.Pusher>
+            <div className="App" style={{ minHeight: 700 }}>
+              <Navbar
+                nameFilter={this.state.nameFilter}
+                searchByName={this.searchByName}
+                showAdvancedFilters={this.showAdvancedFilters}
+              />
 
-            <Segment.Group
-              compact
-              style={{ minHeight: 300 }}
-              className="Composer List"
-            >
-              {composerNames.map(composer => (
-                <ComposerInfo composerInfo={composerInfo[composer]} />
-              ))}
-            </Segment.Group>
-          </div>
-        </Sidebar.Pusher>
-      </Sidebar.Pushable>
+              <Segment.Group compact className="Composer List">
+                {composerNames.map(composer => (
+                  <ComposerInfo composerInfo={composerInfo[composer]} />
+                ))}
+              </Segment.Group>
+            </div>
+          </Sidebar.Pusher>
+        </Sidebar.Pushable>
+      </div>
     );
   }
 }
