@@ -1,15 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import {
-  Segment,
-  Sidebar,
-  Menu,
-  Container,
-  Grid,
-  Header,
-  List,
-  Divider
-} from "semantic-ui-react";
+import { Segment, Sidebar, Container } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
 import SidebarFilter from "./components/Sidebar.js";

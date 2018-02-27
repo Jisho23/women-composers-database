@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Menu, Input, Segment, Header, Button } from "semantic-ui-react";
+import { Menu, Input, Header, Button } from "semantic-ui-react";
 
 class Navbar extends Component {
   render() {

@@ -10,7 +10,7 @@ class PageFooter extends Component {
         vertical
       >
         <Container textAlign="center">
-          <p>This is an rough draft and prototype. Please pardon our dust :)</p>
+          <p>This is a rough draft and prototype. Please pardon our dust :)</p>
           <Divider inverted section />
           <List horizontal inverted divided link>
             <List.Item
