@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Segment, Container, List, Divider } from "semantic-ui-react";
-import { Link } from "react-router";
 
 class PageFooter extends Component {
   render() {
