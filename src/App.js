@@ -70,6 +70,7 @@ class App extends Component {
         />
         <Sidebar.Pushable>
           <Sidebar
+            className={"sidebar"}
             as={Segment}
             animation="overlay"
             direction="left"
@@ -77,7 +78,7 @@ class App extends Component {
             vertical
             inverted
             color="blue"
-            style={{ minHeight: 700 }}
+            style={{ maxHeight: 700 }}
           >
             <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
           </Sidebar>

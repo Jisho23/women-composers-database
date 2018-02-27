@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Segment, Container, List, Divider } from "semantic-ui-react";
+import { Link } from "react-router";
 
 class PageFooter extends Component {
   render() {
@@ -16,12 +17,14 @@ class PageFooter extends Component {
             <List.Item
               as="a"
               href="https://docs.google.com/forms/d/e/1FAIpQLSdqfwwLofsdY9seniIKYLzyK22ycEOURJK2iqNLc951Ojhm8g/viewform"
+              target="_blank"
             >
               Submit a new composer
             </List.Item>
             <List.Item
               as="a"
               href="https://docs.google.com/spreadsheets/d/1vD-hWsQYvi6j-6NP_HCLRtmLKdPX08IXmCOeAPV7ESY/edit#gid=0"
+              target="_blank"
             >
               Original Database
             </List.Item>
