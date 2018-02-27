@@ -4,7 +4,12 @@ import { Form, Header, Menu } from "semantic-ui-react";
 export const createAdvancedFilterForm = (state, handleChange) => {
   return (
     <div>
-      <Menu vertical inverted>
+      <Menu
+        vertical
+        inverted
+        color="blue"
+        style={{ marginTop: "4em", minHeight: 700 }}
+      >
         <Menu.Item>
           <Header inverted>Filter By Race</Header>
         </Menu.Item>

@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Segment, Sidebar, Menu, Container } from "semantic-ui-react";
+import {
+  Segment,
+  Sidebar,
+  Menu,
+  Container,
+  Grid,
+  Header,
+  List,
+  Divider
+} from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
 import SidebarFilter from "./components/Sidebar.js";
 import AdvancedFilterForm from "./components/AdvancedFilterForm.js";
+import ScrollButton from "./components/ScrollButton.js";
+import PageFooter from "./components/PageFoot.js";
 
 class App extends Component {
   state = {
@@ -59,42 +70,41 @@ class App extends Component {
       }
     }
 
-    // if (this.state.filters[attribute]) {
-    //   composerNames = composerNames.filter(name => {
-    //     return composerInfo[name][attribute] === "X";
-    //   });
-    // }
-
     return (
       <div>
+        <Navbar
+          nameFilter={this.state.nameFilter}
+          searchByName={this.searchByName}
+          showAdvancedFilters={this.showAdvancedFilters}
+        />
         <Sidebar.Pushable>
           <Sidebar
-            as={Menu}
-            animation="uncover"
+            as={Segment}
+            animation="overlay"
             direction="left"
             visible={this.state.advancedFilters}
-            width={"wide"}
             vertical
             inverted
+            color="blue"
+            style={{ minHeight: 700 }}
           >
             <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
           </Sidebar>
           <Sidebar.Pusher>
-            <div className="App" style={{ minHeight: 700 }}>
-              <Navbar
-                nameFilter={this.state.nameFilter}
-                searchByName={this.searchByName}
-                showAdvancedFilters={this.showAdvancedFilters}
-              />
-
-              <Segment.Group compact className="Composer List">
-                {composerNames.map(composer => (
-                  <ComposerInfo composerInfo={composerInfo[composer]} />
-                ))}
-              </Segment.Group>
+            <div className="App" style={{ minHeight: 700, marginTop: "4em" }}>
+              <Container />
+              <Container style={{ marginTop: "7em" }}>
+                <Segment.Group compact className="Composer List">
+                  {composerNames.map(composer => (
+                    <ComposerInfo composerInfo={composerInfo[composer]} />
+                  ))}
+                </Segment.Group>
+              </Container>
             </div>
           </Sidebar.Pusher>
         </Sidebar.Pushable>
+        <PageFooter />
+        <ScrollButton scrollStepInPx="400" delayInMs="0.66" />
       </div>
     );
   }
