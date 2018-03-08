@@ -15,7 +15,7 @@ export const createAdvancedFilterForm = (state, handleChange) => {
           <Header inverted>Filter By Race</Header>
         </Menu.Item>
         <Menu.Item>
-          <Form inverted>
+          <Form inverted size={'large'}>
             <label>
               White{" "}
               <input

@@ -18,9 +18,6 @@ class Navbar extends Component {
             Welcome to the Women Composers Database Project
           </Header>
         </Menu.Item>
-        <Menu.Item>
-          <Button onClick={this.props.showAdvancedFilters}>More filters</Button>
-        </Menu.Item>
       </Menu>
     );
   }
