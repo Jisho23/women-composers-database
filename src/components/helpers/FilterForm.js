@@ -4,7 +4,13 @@ import { Form, Header, Menu } from "semantic-ui-react";
 export const createAdvancedFilterForm = (state, handleChange) => {
   return (
     <div>
-      <Menu vertical inverted color="blue" style={{ marginTop: "4em" }}>
+      <Menu
+        className="scroll"
+        vertical
+        inverted
+        color="blue"
+        style={{ marginTop: "4em", width: "300px" }}
+      >
         <Menu.Item>
           <Header inverted>Filter By Race</Header>
         </Menu.Item>
@@ -219,7 +225,7 @@ export const createAdvancedFilterForm = (state, handleChange) => {
         </Menu.Item>
         <Menu.Item>
           <label>
-            Search by Country{" "}
+            Search by Country <br />
             <input
               name="COUNTRY (of residence)"
               type="text"
@@ -230,7 +236,7 @@ export const createAdvancedFilterForm = (state, handleChange) => {
         </Menu.Item>
         <Menu.Item>
           <label>
-            Search by City of Residence{" "}
+            Search by City of Residence <br />
             <input
               name="CITY/STATE (of residence)"
               type="text"

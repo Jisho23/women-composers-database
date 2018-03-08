@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./App.css";
-import { Segment, Sidebar, Container } from "semantic-ui-react";
+import { Segment, Sidebar, Container, Grid, Menu } from "semantic-ui-react";
 import Navbar from "./components/Navbar.js";
 import ComposerInfo from "./components/ComposerInfo";
 import SidebarFilter from "./components/Sidebar.js";
@@ -68,33 +68,22 @@ class App extends Component {
           searchByName={this.searchByName}
           showAdvancedFilters={this.showAdvancedFilters}
         />
-        <Sidebar.Pushable>
-          <Sidebar
-            className={"sidebar"}
-            as={Segment}
-            animation="overlay"
-            direction="left"
-            visible={this.state.advancedFilters}
-            vertical
-            inverted
-            color="blue"
-            style={{ maxHeight: 700 }}
-          >
+        //
+        <Grid columns={3}>
+          <Grid.Column>
             <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
-          </Sidebar>
-          <Sidebar.Pusher>
-            <div className="App" style={{ minHeight: 700, marginTop: "4em" }}>
-              <Container />
-              <Container style={{ marginTop: "7em" }}>
-                <Segment.Group compact className="Composer List">
-                  {composerNames.map(composer => (
-                    <ComposerInfo composerInfo={composerInfo[composer]} />
-                  ))}
-                </Segment.Group>
-              </Container>
-            </div>
-          </Sidebar.Pusher>
-        </Sidebar.Pushable>
+          </Grid.Column>
+          <Grid.Column>
+            <Container>
+              <Segment.Group compact className="Composer List">
+                {composerNames.map(composer => (
+                  <ComposerInfo composerInfo={composerInfo[composer]} />
+                ))}
+              </Segment.Group>
+            </Container>;
+          </Grid.Column>
+          <Grid.Column />
+        </Grid>
         <PageFooter />
         <ScrollButton scrollStepInPx="400" delayInMs="0.66" />
       </div>
@@ -103,3 +92,31 @@ class App extends Component {
 }
 
 export default App;
+
+// <Sidebar.Pushable>
+//   <Sidebar
+//     className={"sidebar"}
+//     as={Segment}
+//     animation="overlay"
+//     direction="left"
+//     visible
+//     vertical
+//     inverted
+//     color="blue"
+//     style={{ maxHeight: 700 }}
+//   >
+//     <AdvancedFilterForm setFilter={this.setAdvancedFilter} />
+//   </Sidebar>
+//   <Sidebar.Pusher>
+//     <div className="App" style={{ minHeight: 700, marginTop: "4em" }}>
+//       <Container />
+//       <Container style={{ marginTop: "7em" }}>
+//         <Segment.Group compact className="Composer List">
+//           {composerNames.map(composer => (
+//             <ComposerInfo composerInfo={composerInfo[composer]} />
+//           ))}
+//         </Segment.Group>
+//       </Container>
+//     </div>
+//   </Sidebar.Pusher>
+// </Sidebar.Pushable>

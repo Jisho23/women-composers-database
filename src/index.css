@@ -20,8 +20,8 @@ label {
 
 .scroll {
   position: fixed;
-  bottom: 10px;
-  right: 10px;
+  top: 10px;
+  left: 10px;
   border-radius: 5px;
 
   &:hover {
@@ -29,13 +29,15 @@ label {
   }
 }
 
-.arrow-up {
-  color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-top: -9px;
-  margin-left: -5px;
+.filters {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 5px;
+
+  &:hover {
+    opacity: 1;
+  }
 }
 
 .sideBar {
