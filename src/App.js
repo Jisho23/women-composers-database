@@ -75,11 +75,13 @@ class App extends Component {
           </Grid.Column>
           <Grid.Column>
             <Container>
-              <Segment.Group compact className="Composer List">
-                {composerNames.map(composer => (
-                  <ComposerInfo composerInfo={composerInfo[composer]} />
-                ))}
-              </Segment.Group>
+              <div className="App" style={{ minHeight: 700, marginTop: "4em" }}>
+                <Segment.Group compact className="Composer List">
+                  {composerNames.map(composer => (
+                    <ComposerInfo composerInfo={composerInfo[composer]} />
+                  ))}
+                </Segment.Group>
+              </div>
             </Container>;
           </Grid.Column>
           <Grid.Column />

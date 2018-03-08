@@ -9,13 +9,13 @@ export const createAdvancedFilterForm = (state, handleChange) => {
         vertical
         inverted
         color="blue"
-        style={{ marginTop: "4em", width: "300px" }}
+        style={{ marginTop: "4em", width: "250px" }}
       >
         <Menu.Item>
           <Header inverted>Filter By Race</Header>
         </Menu.Item>
         <Menu.Item>
-          <Form inverted size={'large'}>
+          <Form inverted className='filterForm'>
             <label>
               White{" "}
               <input
